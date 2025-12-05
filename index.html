@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="output.css">
+</head>
+
+<audio id="winSound" preload="auto">
+  <source src="Victory-Sound-Effect (mp3cut.net).mp3" type="audio/mpeg">
+</audio>
+<audio id="bgMusic" src="sonic (5).mp3" loop></audio>
+<audio id="ringSound" src="Score-points-in-game (7) (mp3cut.net).mp3"></audio>
+<audio id="lostMusic" src="Red-Screen-Sound.mp3"></audio>
+<body class="flex justify-center items-center w-full h-[100vh] flex-wrap gap-10">
+    <div class="game w-[850px] h-[95vh] relative overflow-hidden rounded-xl mt-4">
+      <div class="world w-[2400px] h-full bg-blue-300 absolute bottom-0 left-0 rounded-xl">
+
+        <i class="cloud cloud-1 fa fa-cloud"></i>
+        <i class="cloud cloud-2 fa fa-cloud"></i>
+        <i class="cloud cloud-3 fa fa-cloud"></i>
+        <i class="cloud cloud-4 fa fa-cloud"></i>
+        <i class="cloud cloud-5 fa fa-cloud"></i>
+        <i class="cloud cloud-6 fa fa-cloud"></i>
+
+        <div class="sun"></div>
+
+        <!-- ball -->
+        <div class="ball absolute bottom-[30px] left-[10px] w-[50px] h-[50px] rounded-full 
+               bg-red-500
+               [background:radial-gradient(circle_at_center,_#ef4444,_#dc2626)]
+               shadow-[0_4px_8px_rgba(0,0,0,0.3),inset_0_-4px_6px_rgba(0,0,0,0.3),inset_0_4px_6px_rgba(255,255,255,0.2)]
+               overflow-hidden">
+            <div class="absolute top-3 left-3 w-3 h-3 bg-white rounded-full opacity-80 
+                        shadow-[0_0_6px_rgba(255,255,255,0.8)] blur-[1px]"></div>
+        </div>
+
+          <!-- erth -->
+        <div class="w-full h-[30px] absolute bottom-0 bg-[#444]"></div>
+        <!-- platform -->
+        <div class="platform absolute bottom-[500px] left-[250px] w-[200px] h-[20px] bg-[#444]"></div>
+        <!-- ring -->
+        <div class="ring absolute left-[230px] bottom-[43px] w-[45px] h-[45px] rounded-full border-8 border-yellow-300"></div>
+        <!-- platform -->
+        <div class="platform absolute bottom-[200px] left-[100px] w-[100px] h-[20px] bg-[#444]"></div>
+        <!-- platform -->
+        <div class="platform absolute bottom-[300px] left-[250px] w-[100px] h-[20px] bg-[#444]"></div>
+        <div class="platform absolute bottom-[400px] left-[100px] w-[100px] h-[20px] bg-[#444]"></div>
+        <!-- platform -->
+        <div class="platform absolute bottom-[100px] left-[200px] w-[100px] h-[20px] bg-[#444]"></div>
+        <!-- enemy -->
+        <div class="enemy absolute bottom-[450px] left-[470px] w-[120px] h-[120px] animate-float-x">
+            <img class="[transform:rotateY(180deg)]" src="image/flappy-bird-flappy-ghost-free-sprite-2d-computer-graphics-ghost-thumbnail-removebg-preview.png" alt="">
+        </div>
+        <!-- ring -->
+        <div class="ring absolute left-[330px] bottom-[550px] w-[45px] h-[45px] rounded-full border-8 border-yellow-300"></div>
+        <!-- enemyY -->
+        <div class="enemyY absolute left-[640px] bottom-[30px] w-[15px] h-[50px] bg-red-500"></div>
+        <!-- platform -->
+        <div class="platform absolute bottom-[100px] left-[830px] w-[100px] h-[20px] bg-[#444]"></div>
+          <!-- platform -->
+        <div class="platform absolute bottom-[200px] left-[950px] w-[100px] h-[20px] bg-[#444]"></div>
+          <!-- platform -->
+        <div class="platform absolute bottom-[100px] left-[830px] w-[100px] h-[20px] bg-[#444]"></div>
+        <!-- platform -->
+        <div class="platform absolute bottom-[300px] left-[830px] w-[100px] h-[20px] bg-[#444]"></div>
+        <!-- platform -->
+        <div class="platform absolute bottom-[400px] left-[960px] w-[500px] h-[20px] bg-[#444]"></div>
+        <!-- ring -->
+        <div class="ring absolute left-[1170px] bottom-[510px] w-[45px] h-[45px] rounded-full border-8 border-yellow-300"></div>
+        <!-- enemyY -->
+        <div class="enemyY absolute left-[1060px] bottom-[420px] w-[15px] h-[50px] bg-red-500"></div>
+        <div class="enemyY absolute left-[1310px] bottom-[420px] w-[15px] h-[50px] bg-red-500"></div>
+        <div class="ring absolute left-[1170px] bottom-[43px] w-[45px] h-[45px] rounded-full border-8 border-yellow-300"></div>
+        <!-- enemy -->
+        <div class="enemy absolute bottom-0 left-[1300px] w-[120px] h-[120px] animate-floatMore">
+            <img class="[transform:rotateY(180deg)]" src="image/flappy-bird-flappy-ghost-free-sprite-2d-computer-graphics-ghost-thumbnail-removebg-preview.png" alt="">
+        </div>
+        <!-- platform -->
+        <div class="platform absolute bottom-[200px] left-[1140px] w-[100px] h-[20px] bg-[#444]"></div>
+        <!-- ring -->
+        <div class="ring absolute left-[1170px] bottom-[265px] w-[45px] h-[45px] rounded-full border-8 border-yellow-300"></div>
+        <!-- enemyY -->
+        <div class="enemyY absolute left-[1610px] bottom-[30px] w-[15px] h-[50px] bg-red-500"></div>
+        <!-- enemy -->
+        <div class="enemy absolute bottom-0 left-[1810px] w-[120px] h-[120px] animate-float">
+            <img class="[transform:rotateY(180deg)]" src="image/flappy-bird-flappy-ghost-free-sprite-2d-computer-graphics-ghost-thumbnail-removebg-preview.png" alt="">
+        </div>
+        <!-- finish -->
+        <div class="goal absolute bottom-[30px] left-[2000px] w-[170px] h-[70px] rounded-full 
+        bg-gradient-to-tr from-red-600 via-orange-500 to-yellow-400
+        shadow-[0_0_25px_rgba(255,200,0,0.9)] 
+        animate-pulse
+        flex items-center justify-center text-white font-bold text-xl select-none">
+          🏁
+        </div>
+      </div>
+
+      <div id="hud" class="absolute top-10 left-[40px] text-white font-bold text-xl bg-black/50 px-4 py-2 rounded">
+        Rings: <span id="collected">0</span>/<span id="total">5</span> 
+      </div>
+
+    </div>
+
+    <footer>
+      <div class="sec">
+        <div class="orb"></div>
+        <div class="orb2"></div>
+      
+        <div class="card">
+          <figure>
+            <img src="image/IMG_0747.JPG" alt="profile" />
+          </figure>
+        
+          <h1>Amirmahdi Salamat</h1>
+          <h3>Front-End Developer</h3>
+        
+          <div class="socials">
+          
+            <a href="" target="_blank" class="social github">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          
+            <a href="" target="_blank" class="social linkedin">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          
+            <a href="" target="_blank" class="social insta">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          
+          </div>
+        </div>
+      </div>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</footer>
+</body>
+
+<script>
+document.body.onkeydown = () => {
+  const bgm = document.getElementById('bgMusic');
+  bgm.play();
+  bgm.volume = 0.4;
+}
+let gameOver = false;
+let ball = document.querySelector('.ball')
+let collected = 0;
+const collectedSpan = document.getElementById('collected');
+const goal = document.querySelector('.goal');
+let allRingsCollected = false;
+
+window.addEventListener('keydown', (e) => {
+  let myKey = e.key || e.which
+  switch(myKey){
+    case 'ArrowUp' : up(); break;
+    case 'ArrowRight' : right(); break;
+    case 'ArrowLeft' : left(); break;
+  }
+
+  let enemy = document.querySelectorAll('.enemy');
+  function checkDisplay (){
+    let leftBall = ball.computedStyleMap().get('left').value;
+    let bottomBall = ball.computedStyleMap().get('bottom').value;
+
+    arr.forEach((val, index) => {
+
+      if (rings[index].style.display === 'none') return;
+    
+      if (
+        (leftBall + 50) > arr[index][0] &&
+        leftBall < (arr[index][0] + 45) &&  
+        (bottomBall + 50) > arr[index][1] &&
+        bottomBall < (arr[index][1] + 45)
+      ) {
+        document.getElementById('ringSound').play();
+        rings[index].style.display = 'none';
+        collected++;
+        collectedSpan.innerText = collected;
+
+        if(collected == 5 && !allRingsCollected){
+          allRingsCollected = true;
+          goal.style.background = 'radial-gradient(circle, #86efac, #22c55e)';
+          goal.innerHTML = '<span style="font-size: 2rem;">🏁</span>';
+        }
+      }
+    });
+
+
+  enY.forEach((e) => {
+    if(
+      (leftBall + 50) > e[0] &&
+      (leftBall) < (e[0] + e[2]) &&
+      (bottomBall + 50) > e[1] &&
+      bottomBall < (e[1] + e[3])
+    ){
+      if(gameOver) return;
+      gameOver = true;
+       
+      const lost = document.getElementById('lostMusic')
+    
+      lost.play();
+      setTimeout(() => {
+        alert('You Lost!');
+        location.reload();
+      }, 20);
+      }
+    })
+  enemy.forEach((e) => {
+    let enemyRect = e.getBoundingClientRect();
+    let ballRect = ball.getBoundingClientRect();
+  
+    if (
+      ballRect.right > enemyRect.left &&
+      ballRect.left < enemyRect.right &&
+      ballRect.bottom > enemyRect.top &&
+      ballRect.top < enemyRect.bottom
+    ) {
+      if(gameOver) return;
+      gameOver = true;
+
+      const lost = document.getElementById('lostMusic')
+    
+      lost.play();
+      setTimeout(() => {
+        alert('You Lost!');
+        location.reload();
+      }, 20);
+      }
+  });
+  
+        
+  let ballRect = ball.getBoundingClientRect();
+  let goalRect = goal.getBoundingClientRect();
+  if(
+    allRingsCollected &&
+    ballRect.right > goalRect.left &&
+    ballRect.left < goalRect.right &&
+    ballRect.bottom > goalRect.top &&
+    ballRect.top < goalRect.bottom
+  ){
+    if (gameOver) return;
+    gameOver = true;
+    winSound.play();
+    setTimeout(() => {
+      alert('You Win!');
+      location.reload();
+    }, 20);
+  }
+      
+        setTimeout(checkDisplay, 10);
+      }
+      checkDisplay();
+    })
+
+let isMovingUp = false;
+let isMovingRight = false;
+let isMovingLeft = false;
+let isMovingDown = false;
+let canJump = true;
+
+function up(){
+  if(isMovingUp || !canJump) return;
+  isMovingUp = true;
+  canJump = false;
+  let start = ball.computedStyleMap().get('bottom').value;
+  let target = start + 150;
+
+  function move(){
+    let distance = target - start;
+    let speed = (distance / 15) + 0.3;
+    if(speed < 0.3) speed = 0.3;
+
+    for (let i = 0; i < platArr.length; i++) {
+      let p = platArr[i];
+
+  if (
+    (ball.computedStyleMap().get('left').value + 50) > p[0] &&
+    ball.computedStyleMap().get('left').value < p[1] &&
+    (start + 50) >= p[3] &&
+    start < p[3]
+  ) {
+    start = p[3] - 50;
+    ball.style.bottom = start + 'px';
+
+    isMovingUp = false;
+
+    isMovingDown = false;
+
+    setTimeout(() => {
+      if (!isMovingDown) down();
+    }, 1);
+
+    return; 
+  }
+}
+
+
+    start += speed;
+
+    if(start >= target){
+      ball.style.bottom = target + 'px';
+      isMovingUp = false;
+      down();
+      return;
+    }
+
+    ball.style.bottom = start + 'px';
+    setTimeout(move, 10);
+  }
+
+  move();
+}
+
+function down(){
+  if(isMovingDown) return;
+  isMovingDown = true;
+  
+  let start = ball.computedStyleMap().get('bottom').value;
+  let target = 30; 
+  let total = start - target;
+
+  function move(){
+    let stop = false;
+
+    platArr.forEach((p) => {
+      if(
+        (ball.computedStyleMap().get('left').value + 50) > p[0] &&
+        ball.computedStyleMap().get('left').value < p[1] &&
+        start > p[2] - 1 &&
+        start <= p[2] + 50
+      ){
+        start = p[2];
+        stop = true;
+      }
+    });
+
+    if(start <= target){
+      start = target;
+      stop = true;
+    }
+
+    ball.style.bottom = start + 'px';
+
+    if(stop){
+      isMovingDown = false;
+      canJump = true;
+      return;
+    }
+
+    let distance = start - target;
+    let progress = total - distance;
+    let speed = (progress / 15) + 0.5;
+    if(speed < 0.5) speed = 0.5;
+
+    start -= speed;
+    setTimeout(move, 10);
+  }
+
+  move();
+}
+
+
+let world = document.querySelector('.world');
+let worldOffset = 0;
+let moveCount = 0; 
+let firstRight = true;
+
+function right() {
+  if (isMovingRight) return;
+  isMovingRight = true;
+
+  let start = ball.computedStyleMap().get('left').value;
+  let target = start + 120;
+
+  if (firstRight) {
+    target = start + 240; 
+  }
+
+  function move() {
+    let distance = target - start;
+    let speed = (distance / 45) + 3;
+    if (speed < 2) speed = 2;
+
+    start += speed;
+    ball.style.left = start + 'px';
+
+    let ballMovedDistance = start - 10; 
+    if (ballMovedDistance > 230) {
+      let newOffset = -(ballMovedDistance - 230); 
+      if (newOffset < -1450) newOffset = -1450; 
+      worldOffset = newOffset;
+      world.style.transform = `translateX(${worldOffset}px)`;
+    }
+
+    if (start >= target) {
+      ball.style.left = target + 'px';
+      isMovingRight = false;
+      moveCount++;
+      if (firstRight) firstRight = false;
+      return;
+    }
+
+    setTimeout(move, 10);
+  }
+
+  move();
+}
+
+function left() {
+  if (isMovingLeft) return;
+  isMovingLeft = true;
+
+  let start = ball.computedStyleMap().get('left').value;
+  let target = start - 120;
+  let minLeft = 0;
+  if (target < minLeft) target = minLeft;
+
+  function move() {
+    let distance = start - target;
+    let speed = (distance / 45) + 3;
+    if (speed < 2) speed = 2;
+
+    start -= speed;
+    if (start < minLeft) start = minLeft;
+    ball.style.left = start + 'px';
+
+    let ballMovedDistance = start - 10;
+    if (ballMovedDistance > 230) {
+      worldOffset = -(ballMovedDistance - 230);
+      if (worldOffset < -1450) worldOffset = -1450;
+    } else {
+      worldOffset = 0; 
+    }
+    world.style.transform = `translateX(${worldOffset}px)`;
+
+    if (start <= target) {
+      ball.style.left = target + 'px';
+      isMovingLeft = false;
+      return;
+    }
+
+    setTimeout(move, 10);
+  }
+
+  move();
+}
+
+
+let rings = document.querySelectorAll('.ring');
+const arr = [];
+
+rings.forEach((ring) => {
+  let Rx = ring.computedStyleMap().get('left').value;
+  let Ry = ring.computedStyleMap().get('bottom').value;
+  arr.push([Rx, Ry]);
+})
+
+let platforms = document.querySelectorAll('.platform')
+const platArr = []
+
+platforms.forEach((plat) => {
+  let Px = plat.computedStyleMap().get('left').value;
+  let Py = plat.computedStyleMap().get('bottom').value;
+  let Pw = plat.offsetWidth;
+  let Ph = plat.offsetHeight;
+  let startX = Px;
+  let endX = Px + Pw;
+  let platErth = Py + Ph;
+
+  platArr.push([startX, endX, platErth, Py, Ph])
+})
+
+function checkPlatForms(){
+  let leftBall = ball.computedStyleMap().get('left').value;
+  let bottomBall = ball.computedStyleMap().get('bottom').value;
+  let onPlatForm = false;
+
+  platArr.forEach((p, i) => {
+    if(
+      (leftBall + 50) > p[0] &&
+      (leftBall) < p[1] &&
+      bottomBall <= p[2] - 5 &&
+      bottomBall >= p[3]
+    ){
+      ball.style.bottom = p[2] + 'px';
+      isMovingUp = false;
+      onPlatForm = true;
+    }
+  })
+
+  if(!onPlatForm && !isMovingUp && !isMovingDown){
+    down()
+  }
+
+  setTimeout(checkPlatForms, 10);
+}
+checkPlatForms()
+
+
+let enemyY = document.querySelectorAll('.enemyY');
+const enY = [];
+
+enemyY.forEach((e) => {
+  let Rx = e.computedStyleMap().get('left').value;
+  let Ry = e.computedStyleMap().get('bottom').value;
+  let Rw = e.offsetWidth;
+  let Rh = e.offsetHeight;
+
+  enY.push([Rx, Ry, Rw, Rh]);
+})
+  
+
+
+</script>
+
+
+</html>
